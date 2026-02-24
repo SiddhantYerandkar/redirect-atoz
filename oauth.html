@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    window.onload = function () {
+      const params = window.location.search;
+      window.location.replace("atozuser://auth" + params);
+    };
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
