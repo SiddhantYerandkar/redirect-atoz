@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+
+  <script>
+    function openApp() {
+      const params = new URLSearchParams(window.location.search);
+
+      const userId = params.get("userId");
+      const secret = params.get("secret");
+
+      if (!userId || !secret) {
+        document.getElementById("message").innerText =
+          "Invalid reset link.";
+        return;
+      }
+
+      const deepLink =
+        `atoz://reset-password?userId=${userId}&secret=${secret}`;
+
+      // try opening the app
+      window.location.href = deepLink;
+
+      // fallback if app not installed
+      setTimeout(() => {
+        document.getElementById("message").innerHTML =
+          "If the app didn't open, tap the button below.";
+        document.getElementById("openApp").style.display = "inline-block";
+      }, 1500);
+    }
+
+    window.onload = openApp;
+  </script>
+</head>
+
+<body style="font-family: Arial; text-align: center; padding-top: 60px;">
+
+  <h2>Password Reset</h2>
+
+  <p id="message">Opening the app...</p>
+
+  <a
+    id="openApp"
+    href="#"
+    style="
+      display:none;
+      padding:12px 20px;
+      background:#6366F1;
+      color:white;
+      border-radius:8px;
+      text-decoration:none;
+    "
+    onclick="openApp()"
+  >
+    Open App
+  </a>
+
+</body>
+</html>
