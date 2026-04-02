@@ -2,14 +2,12 @@
 <html>
 <head>
   <script>
-    // grab userId and secret from URL params
-    const params = new URLSearchParams(window.location.search);
-    const userId = params.get('userId');
-    const secret = params.get('secret');
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get('userId');
+  const secret = params.get('secret');
 
-    // redirect back to the app
-    window.location.href = `atoz://localhost?userId=${userId}&secret=${secret}`;
-  </script>
+  window.location.href = `atoz://oauth?userId=${userId}&secret=${secret}`;
+</script>
 </head>
 <body>
   <p>Redirecting back to app...</p>
